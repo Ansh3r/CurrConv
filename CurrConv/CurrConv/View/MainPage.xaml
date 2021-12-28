@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:CurrConv.VM;assembly=CurrConv"
+             x:Class="CurrConv.View.MainPage"
+             x:DataType="viewModel:MVVM">
+
+    <StackLayout VerticalOptions="Center" Orientation="Vertical">
+        <Frame Margin="10, 0, 10, 0">
+            <DatePicker Margin="10, 0, 10, 0" Format="dd/MM/yyyy" DateSelected="OnDateSelected">
+                <DatePicker.MinimumDate>10/10/2017</DatePicker.MinimumDate>
+            </DatePicker>
+        </Frame>
+        <Label TextColor="Black" Text="{Binding SelectedDate}" FontSize="Title" Padding="10" />
+        <Label TextColor="Black" FontAttributes="Bold" FontSize="Large" Padding="10">From</Label>
+        <Picker Margin="10, 0, 10, 0" ItemsSource="{Binding Currs}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding CurrRight}" />
+
+
+        <Entry  Margin="10, 0, 10, 0" Placeholder="123" Keyboard="Numeric" Text="{Binding FromV}" TextChanged="OnTextChanged"></Entry>
+        <Label TextColor="Black" FontSize="Large"  FontAttributes="Bold" Padding="10">To</Label>
+        <Picker Margin="10, 0, 10, 0" ItemsSource="{Binding Currs}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding CurrLeft}"/>
+        <Entry  Margin="10, 0, 10, 0" Keyboard="Numeric" Text="{Binding ToV}" TextChanged="OnTextChanged"></Entry>
+        <Label TextColor="Black"  FontAttributes="Bold" Text="{Binding ToV}" FontSize="Title" Padding="20"/>
+        
+    </StackLayout>
+
+</ContentPage>
